@@ -2,6 +2,35 @@ from PyQt5 import QtCore, QtWidgets
 
 
 class Ui_MainWindow(object):
+    def shownumber(self, number):
+        temp = self.txt.text()
+        temp += number
+        self.txt.setText(temp)
+
+    def operator(self, opname):
+        temp = self.txt.text()
+        self.txt.setText(temp+opname)
+
+    def clean(self):
+        self.txt.setText("")
+
+    def back(self):
+        temp = self.txt.text()
+        self.txt.setText(temp[:-1])
+
+    def darsad(self):
+        temp = float(self.txt.text())
+        result = temp*0.01
+        self.txt.setText(str(result))
+
+    def result(self):
+        try:
+            tempformol = self.txt.text()
+            tempjavab = eval(self.txt.text())
+            self.txt.setText(tempformol+"="+str(tempjavab))
+        except:  # noqa: E722
+            self.txt.setText("Error")
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(354, 439)
@@ -16,82 +45,98 @@ class Ui_MainWindow(object):
                                "border-radius:10px;\n"
                                "border:2px;")
         self.txt.setObjectName("txt")
-        self.btn_dasad = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_dasad = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.darsad())
         self.btn_dasad.setGeometry(QtCore.QRect(20, 110, 75, 51))
         self.btn_dasad.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                      "font: 18pt \"B Tir\";")
         self.btn_dasad.setObjectName("btn_dasad")
-        self.btn_c = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_c = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.clean())
         self.btn_c.setGeometry(QtCore.QRect(100, 110, 75, 51))
         self.btn_c.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_c.setObjectName("btn_c")
-        self.btn_back = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_back = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.back())
         self.btn_back.setGeometry(QtCore.QRect(180, 110, 75, 51))
         self.btn_back.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                     "font: 18pt \"B Tir\";")
         self.btn_back.setObjectName("btn_back")
-        self.btn_taq = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_taq = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.operator("/"))
         self.btn_taq.setGeometry(QtCore.QRect(260, 110, 75, 51))
         self.btn_taq.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                    "font: 18pt \"B Tir\";")
         self.btn_taq.setObjectName("btn_taq")
-        self.btn_9 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_9 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("9"))
         self.btn_9.setGeometry(QtCore.QRect(180, 170, 75, 51))
         self.btn_9.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_9.setObjectName("btn_9")
-        self.btn_7 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_7 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("7"))
         self.btn_7.setGeometry(QtCore.QRect(20, 170, 75, 51))
         self.btn_7.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_7.setObjectName("btn_7")
-        self.btn_zarb = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_zarb = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.operator("*"))
         self.btn_zarb.setGeometry(QtCore.QRect(260, 170, 75, 51))
         self.btn_zarb.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                     "font: 18pt \"B Zar\";")
         self.btn_zarb.setObjectName("btn_zarb")
-        self.btn_8 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_8 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("8"))
         self.btn_8.setGeometry(QtCore.QRect(100, 170, 75, 51))
         self.btn_8.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_8.setObjectName("btn_8")
-        self.btn_6 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_6 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("6"))
         self.btn_6.setGeometry(QtCore.QRect(180, 230, 75, 51))
         self.btn_6.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_6.setObjectName("btn_6")
-        self.btn_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_4 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("4"))
         self.btn_4.setGeometry(QtCore.QRect(20, 230, 75, 51))
         self.btn_4.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_4.setObjectName("btn_4")
-        self.btn_menha = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_menha = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.operator("-"))
         self.btn_menha.setGeometry(QtCore.QRect(260, 230, 75, 51))
         self.btn_menha.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                      "font: 18pt \"B Tir\";")
         self.btn_menha.setObjectName("btn_menha")
-        self.btn_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_5 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("1"))
         self.btn_5.setGeometry(QtCore.QRect(100, 230, 75, 51))
         self.btn_5.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_5.setObjectName("btn_5")
-        self.btn_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_3 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("3"))
         self.btn_3.setGeometry(QtCore.QRect(180, 290, 75, 51))
         self.btn_3.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_3.setObjectName("btn_3")
-        self.btn_1 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_1 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("1"))
         self.btn_1.setGeometry(QtCore.QRect(20, 290, 75, 51))
         self.btn_1.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
         self.btn_1.setObjectName("btn_1")
-        self.btn_jam = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_jam = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.operator("+"))
         self.btn_jam.setGeometry(QtCore.QRect(260, 290, 75, 51))
         self.btn_jam.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                    "font: 18pt \"B Tir\";")
         self.btn_jam.setObjectName("btn_jam")
-        self.btn_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_2 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("2"))
         self.btn_2.setGeometry(QtCore.QRect(100, 290, 75, 51))
         self.btn_2.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 18pt \"B Tir\";")
@@ -107,12 +152,14 @@ class Ui_MainWindow(object):
                                         "font: 18pt \"B Zar\";\n"
                                         "font: 18pt \"B Tir\";")
         self.btn_jammenha.setObjectName("btn_jammenha")
-        self.btn_mosavi = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_mosavi = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.result())
         self.btn_mosavi.setGeometry(QtCore.QRect(260, 350, 75, 51))
         self.btn_mosavi.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                       "font: 18pt \"B Tir\";")
         self.btn_mosavi.setObjectName("btn_mosavi")
-        self.btn_0 = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_0 = QtWidgets.QPushButton(
+            self.centralwidget, clicked=lambda: self.shownumber("0"))
         self.btn_0.setGeometry(QtCore.QRect(100, 350, 75, 51))
         self.btn_0.setStyleSheet("background-color: rgb(57, 84, 132);\n"
                                  "font: 19pt \"B Zar\";")
